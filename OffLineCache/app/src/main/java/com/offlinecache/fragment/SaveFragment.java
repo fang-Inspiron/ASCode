@@ -40,7 +40,6 @@ public class SaveFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         rootView = inflater.inflate(R.layout.fragemnt_save, container, false);
 
         et_input = (EditText) rootView.findViewById(R.id.et_input);
@@ -66,8 +65,7 @@ public class SaveFragment extends Fragment {
                         public void onClick(View v) {}
                     }).show();
                 } else {
-                    new AlertDialog(getActivity()).builder()
-                            .setMsg("网络无连接，请联网后继续！")
+                    new AlertDialog(getActivity()).builder().setMsg("网络无连接，请联网后继续！")
                             .setNegativeButton("确定", new OnClickListener() {
                                 @Override
                                 public void onClick(View v) {}
@@ -78,8 +76,5 @@ public class SaveFragment extends Fragment {
 
         return rootView;
     }
-
-
-
 
 }

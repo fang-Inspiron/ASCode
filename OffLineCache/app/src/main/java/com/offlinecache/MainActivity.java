@@ -1,7 +1,6 @@
 package com.offlinecache;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,9 +11,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
-import com.offlinecache.fragment.LocalityFragment;
 import com.offlinecache.fragment.MeFragment;
 import com.offlinecache.fragment.SaveFragment;
+import com.offlinecache.fragment.LocalityFragment;
 
 import java.util.ArrayList;
 import java.util.List;
