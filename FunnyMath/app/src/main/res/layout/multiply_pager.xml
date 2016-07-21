@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/function_background" >
+
+    <TextView
+        android:id="@+id/multiply_textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/textview_style"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+    <TextView
+        android:id="@+id/multiply_textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/multiply_textView1"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/textview_style"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+
+    <RadioGroup
+        android:id="@+id/multiply_radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp" >
+
+        <RadioButton
+            android:id="@+id/multiply_radioButtonA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/radio"
+            android:drawableLeft="@mipmap/background_a"
+            android:drawablePadding="5dp"
+            android:button="@null"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/multiply_radioButtonB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/radio"
+            android:drawableLeft="@mipmap/background_b"
+            android:drawablePadding="5dp"
+            android:button="@null"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/multiply_radioButtonC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/radio"
+            android:drawableLeft="@mipmap/background_c"
+            android:drawablePadding="5dp"
+            android:button="@null"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/multiply_radioButtonD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/radio"
+            android:drawableLeft="@mipmap/background_d"
+            android:drawablePadding="5dp"
+            android:button="@null"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="0.25">
+            <ImageView
+                android:id="@+id/imageView_difficulty"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:tag="0"
+                android:src="@mipmap/setting"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="难度"
+                android:textColor="#ffffff"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="0.25">
+            <ImageView
+                android:id="@+id/imageView_voice"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/voice"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="语音"
+                android:textColor="#ffffff"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="0.25">
+            <ImageView
+                android:id="@+id/imageView_help"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/us"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="帮助"
+                android:textColor="#ffffff"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="0.25">
+            <ImageView
+                android:id="@+id/imageView_teach"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/teach"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="教学"
+                android:textColor="#ffffff"
+                android:textSize="15sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

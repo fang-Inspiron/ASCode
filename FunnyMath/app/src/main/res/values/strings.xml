@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FunnyMath</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="school_introduction">西安邮电大学坐落于历史名城西安南郊文化区，是一所以工为主，以信息科学技术为特色，工、管、理、经、文、法、艺多学科协调发展的普通高等学校，是国家在西北地区布局的唯一一所邮电通信类高等学校、是由陕西省人民政府与工业和信息化部共建院校，陕西高水平大学建设高校、教育部“卓越工程师教育培养计划”实施高校、中国人民解放军后备军官选拔培养基地、全国首批试办边防军人子女预科班的高校。学校先后荣获陕西省“先进集体”“文明校园”“平安校园”“依法治校示范校”“园林式单位”“陕西高等学校先进基层党委”称号。
+</string>
+    <string name="app_introduction">本软件致力于让孩子在娱乐中学习数学,发现数学的乐趣，在游戏中提高逻辑思维能力，并增加了与家长的互动。</string>
+
+</resources>

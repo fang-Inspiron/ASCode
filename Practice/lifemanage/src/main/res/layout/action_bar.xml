@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/action_actionbar"
+    android:layout_width="fill_parent"
+    android:layout_height="49dp"
+    android:background="#00BB9C" >
+
+    <ImageView
+        android:id="@+id/action_back"
+        android:layout_width="15dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:background="@mipmap/action_back" />
+
+    <ImageView
+        android:id="@+id/action_right"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible"
+        android:layout_marginRight="15dp"
+        android:background="@mipmap/fujian" />
+
+    <TextView
+        android:id="@+id/actionbar_title"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_toLeftOf="@id/action_right"
+        android:layout_toRightOf="@id/action_back"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+</RelativeLayout>
