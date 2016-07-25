@@ -24,10 +24,10 @@ public class WebActivity extends AppCompatActivity {
         webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
 
-        Intent intent = getIntent();
-        num = intent.getIntExtra("num", 0);
-        String htmlName = "file"+ MainActivity.num+".html";
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath().toString() + "/CacheApp/";
-        webView.loadUrl("file://" + path + htmlName);
+//        Intent intent = getIntent();
+//        num = intent.getIntExtra("num", 0);
+//        String htmlName = "file"+ MainActivity.num+".html";
+//        String path = Environment.getExternalStorageDirectory().getAbsolutePath().toString() + "/CacheApp/";
+//        webView.loadUrl("file://" + path + htmlName);
     }
 }

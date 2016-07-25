@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public static int num=0;
     private RadioGroup rg_main_menu;
     private RadioButton rb_save;
     private RadioButton rb_locality;

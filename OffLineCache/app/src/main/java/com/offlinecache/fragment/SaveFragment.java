@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.offlinecache.R;
 import com.offlinecache.http.GetContentThread;
+import com.offlinecache.http.UploadData;
 import com.offlinecache.utils.AlertDialog;
 import com.offlinecache.utils.CheckNetwork;
 
@@ -30,7 +31,11 @@ public class SaveFragment extends Fragment {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             //GetContentThread类中已缓存成功
-            if (msg.what == 100)
+            if (msg.what == 100) {
+                int num = msg.arg1;
+                System.out.println("num:"+num);
+                new GetContentThread(handler, et_input.getText().toString(), num).start();
+            } else if (msg.what == 200)
                 Toast.makeText(getActivity(),"已缓存成功",Toast.LENGTH_SHORT).show();
             else
                 Toast.makeText(getActivity(),"缓存失败",Toast.LENGTH_SHORT).show();
@@ -50,7 +55,7 @@ public class SaveFragment extends Fragment {
             public void onClick(View v) {
                 if (CheckNetwork.checkNetworkConnection(getActivity()) == 1) {
                     //当前使用的是wifi
-                    new GetContentThread(et_input.getText().toString(), handler).start();
+                    new UploadData(getContext(), handler, et_input.getText().toString()).start();
                 } else if (CheckNetwork.checkNetworkConnection(getActivity()) == 2) {
                     //当前使用的是数据流量
                     new AlertDialog(getActivity()).builder().setTitle("温馨提示")
@@ -58,7 +63,7 @@ public class SaveFragment extends Fragment {
                             .setPositiveButton("确认继续", new OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    new GetContentThread(et_input.getText().toString(), handler).start();
+                                    new UploadData(getContext(), handler, et_input.getText().toString()).start();
                                 }
                             }).setNegativeButton("取消", new OnClickListener() {
                         @Override
