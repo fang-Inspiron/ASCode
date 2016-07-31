@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+//apply from: 'https://raw.githubusercontent.com/XunMengWinter/JCenter/master/installv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/XunMengWinter/JCenter/master/bintrayv1.gradle'
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'CircularAnimUtil'
+
+    publishedGroupId = 'top.wefor.circularanim'
+    libraryName = 'circularanim'
+    artifact = 'circularanim'
+
+    libraryDescription = '快速创建圆形动画，对 ViewAnimationUtils.createCircularReveal() 方法的封装.'
+
+    siteUrl = 'https://github.com/XunMengWinter/CircularAnimUtil'
+    gitUrl = 'https://github.com/XunMengWinter/CircularAnimUtil.git'
+
+    libraryName = 'CircularAnimUtil'       //项目名字
+    libraryVersion = '0.1.0'
+
+    developerId = 'xunmengwinter'
+    developerName = 'xunmengwinter'
+    developerEmail = 'xunmengwinter@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+}
