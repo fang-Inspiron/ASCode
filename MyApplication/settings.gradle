@@ -1,1 +1,1 @@
-include ':app', ':universal_imageloader', ':socketdemo', ':Demo', ':mvplogindemo', ':prograssbar3color', ':frescodemo', ':picasso', ':picassodemo', ':myviewdemo'
+include ':app', ':universal_imageloader', ':socketdemo', ':Demo', ':mvplogin', ':prograssbar3color', ':frescodemo', ':picasso', ':picassodemo', ':myviewdemo', ':eventbusdemo'

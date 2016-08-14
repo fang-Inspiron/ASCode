@@ -5,8 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/Demo/Demo.iml" filepath="$PROJECT_DIR$/Demo/Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eventbusdemo/eventbusdemo.iml" filepath="$PROJECT_DIR$/eventbusdemo/eventbusdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/frescodemo/frescodemo.iml" filepath="$PROJECT_DIR$/frescodemo/frescodemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mvplogindemo/mvplogindemo.iml" filepath="$PROJECT_DIR$/mvplogindemo/mvplogindemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvplogin/mvplogin.iml" filepath="$PROJECT_DIR$/mvplogin/mvplogin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvplogin/mvplogindemo.iml" filepath="$PROJECT_DIR$/mvplogin/mvplogindemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/myviewdemo/myviewdemo.iml" filepath="$PROJECT_DIR$/myviewdemo/myviewdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/picasso/picasso.iml" filepath="$PROJECT_DIR$/picasso/picasso.iml" />
       <module fileurl="file://$PROJECT_DIR$/picassodemo/picassodemo.iml" filepath="$PROJECT_DIR$/picassodemo/picassodemo.iml" />

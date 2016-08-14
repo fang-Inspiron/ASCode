@@ -41,7 +41,7 @@ public class LoginModel implements ILoginModel {
                     System.out.println(s);
                     //登录失败
                     setStatus(ILoginModel.LOGIN_FALUIRE);
-                    setMsg("登录失败");
+                    setMsg(s);
                     callBack.status(LoginModel.this);
                 }
             });

@@ -11,7 +11,7 @@ import cn.bmob.v3.BmobUser;
 public class App extends Application {
 
     //应用密匙
-    private static final String APP_KEY = "29ca8d195de08c21b758a1545ffb84cc";
+    private static final String APP_KEY = "8722e67d30922a677bf0eaaea23ba794";
     private static BmobUser user;
 
     @Override
