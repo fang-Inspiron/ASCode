@@ -7,12 +7,13 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/eventbusdemo/eventbusdemo.iml" filepath="$PROJECT_DIR$/eventbusdemo/eventbusdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/frescodemo/frescodemo.iml" filepath="$PROJECT_DIR$/frescodemo/frescodemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/listviewbetter/listviewbetter.iml" filepath="$PROJECT_DIR$/listviewbetter/listviewbetter.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvplogin/mvplogin.iml" filepath="$PROJECT_DIR$/mvplogin/mvplogin.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvplogin/mvplogindemo.iml" filepath="$PROJECT_DIR$/mvplogin/mvplogindemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/myviewdemo/myviewdemo.iml" filepath="$PROJECT_DIR$/myviewdemo/myviewdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/picasso/picasso.iml" filepath="$PROJECT_DIR$/picasso/picasso.iml" />
       <module fileurl="file://$PROJECT_DIR$/picassodemo/picassodemo.iml" filepath="$PROJECT_DIR$/picassodemo/picassodemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/prograssbar3color/prograssbar3color.iml" filepath="$PROJECT_DIR$/prograssbar3color/prograssbar3color.iml" />
+      <module fileurl="file://$PROJECT_DIR$/refreshlistview/refreshlistview.iml" filepath="$PROJECT_DIR$/refreshlistview/refreshlistview.iml" />
       <module fileurl="file://$PROJECT_DIR$/socketdemo/socketdemo.iml" filepath="$PROJECT_DIR$/socketdemo/socketdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/universal_imageloader/universal_imageloader.iml" filepath="$PROJECT_DIR$/universal_imageloader/universal_imageloader.iml" />
     </modules>
