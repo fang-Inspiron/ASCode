@@ -43,12 +43,10 @@
         </LinearLayout>
         <Button
             android:layout_width="60dip"
-            android:layout_height="30dip"
-            android:background="@drawable/dlbtn_selector"
+            android:layout_height="40dip"
             android:id="@+id/item3_dlbtn"
             android:layout_marginRight="10dip"
-            android:text="安装"
-            />
+            android:text="安装"/>
     </LinearLayout>
 
     <TextView

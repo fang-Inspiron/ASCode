@@ -47,7 +47,6 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         ApkEntity entity = apk_list.get(position);
         ViewHolder viewHolder = null;
 

@@ -1,5 +1,6 @@
 package com.refreshlistview;
 
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +28,45 @@ public class MainActivity extends AppCompatActivity implements RefreshListView.o
         listView.setRefreshListener(this);
     }
 
+    @Override
+    public void onRefresh() {
+        new AsyncTask<Void, Void,Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                // 刷新数据
+                generateData();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void result) {
+                // 通知界面显示这些数据
+                showList();
+                // 通知ListView刷新完毕
+                listView.refreshComplete();
+            }
+        }.execute(null,null,null);
+        //当有多个后台任务时用handler；当后台任务少时用AsyncTask
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                // 刷新数据
+//                generateData();
+//                // 通知界面显示这些数据
+//                showList();
+//                // 通知ListView刷新完毕
+//                listView.refreshComplete();
+//            }
+//        }, 2000);
+    }
+
     private void setData() {
         apk_list = new ArrayList<ApkEntity>();
         for (int i = 0; i < 10; i++) {
@@ -41,9 +81,9 @@ public class MainActivity extends AppCompatActivity implements RefreshListView.o
     private void generateData() {
         for (int i = 0; i < 1; i++) {
             ApkEntity entity = new ApkEntity();
-            entity.setName("1");
-            entity.setDes("1");
-            entity.setInfo("1");
+            entity.setName("新添数据");
+            entity.setDes("new");
+            entity.setInfo("new");
             apk_list.add(0, entity);
         }
     }
@@ -58,18 +98,5 @@ public class MainActivity extends AppCompatActivity implements RefreshListView.o
         }
     }
 
-    @Override
-    public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // 刷新数据
-                generateData();
-                // 通知界面显示这些数据
-                showList();
-                // 通知ListView刷新完毕
-                listView.refreshComplete();
-            }
-        }, 2000);
-    }
+
 }
