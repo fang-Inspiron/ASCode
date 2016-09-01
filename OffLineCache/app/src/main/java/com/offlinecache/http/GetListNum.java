@@ -1,19 +1,42 @@
 package com.offlinecache.http;
 
-import com.android.volley.RequestQueue;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+
+import com.offlinecache.utils.HttpUtils;
+import com.offlinecache.utils.UrlUtils;
 
 /**
  * Created by fang on 2016/7/25.
  */
 public class GetListNum extends Thread {
 
-    String url = "http://192.168.1.215:8080/FindServlet";
-    RequestQueue requestQueue;
+    Context context;
+    Handler handler;
+    String url;
+
+    public GetListNum(Context context, Handler handler, String url) {
+        this.context = context;
+        this.handler = handler;
+        this.url = url;
+    }
 
     @Override
     public void run() {
-        super.run();
+        HttpUtils httpUtils = HttpUtils.getInstance(context, UrlUtils.FIND);
+        httpUtils.http("fang", new HttpUtils.MyListener(){
 
+            @Override
+            public void onSuccess(String s) {
+                System.out.println("成功s!!!!!"+s);
+                Message msg = new Message();
+            }
 
+            @Override
+            public void onFailure(String s) {
+                System.out.println("失败s:"+s);
+            }
+        });
     }
 }

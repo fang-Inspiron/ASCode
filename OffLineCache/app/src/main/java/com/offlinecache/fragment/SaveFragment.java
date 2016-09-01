@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.offlinecache.R;
 import com.offlinecache.http.GetContentThread;
+import com.offlinecache.http.GetListNum;
 import com.offlinecache.http.UploadData;
 import com.offlinecache.utils.AlertDialog;
 import com.offlinecache.utils.CheckNetwork;
@@ -32,9 +33,9 @@ public class SaveFragment extends Fragment {
             super.handleMessage(msg);
             //GetContentThread类中已缓存成功
             if (msg.what == 100) {
-                int num = msg.arg1;
-                System.out.println("num:"+num);
-                new GetContentThread(handler, et_input.getText().toString(), num).start();
+//                int num = msg.arg1;
+//                System.out.println("num:"+num);
+//                new GetContentThread(handler, et_input.getText().toString(), num).start();
             } else if (msg.what == 200)
                 Toast.makeText(getActivity(),"已缓存成功",Toast.LENGTH_SHORT).show();
             else
@@ -55,7 +56,8 @@ public class SaveFragment extends Fragment {
             public void onClick(View v) {
                 if (CheckNetwork.checkNetworkConnection(getActivity()) == 1) {
                     //当前使用的是wifi
-                    new UploadData(getContext(), handler, et_input.getText().toString()).start();
+                    new GetListNum(getContext(), handler, et_input.getText().toString()).start();
+                 //   new UploadData(getContext(), handler, et_input.getText().toString()).start();
                 } else if (CheckNetwork.checkNetworkConnection(getActivity()) == 2) {
                     //当前使用的是数据流量
                     new AlertDialog(getActivity()).builder().setTitle("温馨提示")

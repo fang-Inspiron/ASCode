@@ -7,6 +7,7 @@ import android.os.Message;
 
 import com.offlinecache.Bean.User;
 import com.offlinecache.utils.HttpUtils;
+import com.offlinecache.utils.UrlUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class UploadData extends Thread{
     public void run() {
         super.run();
         //先上传数据，再得到list.size()（用于命名文件名）
-        HttpUtils httpUtils = new HttpUtils(context);
+        HttpUtils httpUtils = HttpUtils.getInstance(context, UrlUtils.UPDATE);
         final List<String> list =  new ArrayList<>();
         boolean flag = false;
         for (String item: list) {
@@ -44,7 +45,7 @@ public class UploadData extends Thread{
         httpUtils.http(user, new HttpUtils.MyListener() {
             @Override
             public void onSuccess(String s) {
-                System.out.println(s);
+                System.out.println("UploadData--onSuccess:"+s);
                 //发送消息
                 Message msg = new Message();
                 msg.arg1 = list.size();
@@ -54,7 +55,7 @@ public class UploadData extends Thread{
 
             @Override
             public void onFailure(String s) {
-                System.out.println(s);
+                System.out.println("UploadData--onFailure:"+s);
                 handler.sendEmptyMessage(101);
             }
         });

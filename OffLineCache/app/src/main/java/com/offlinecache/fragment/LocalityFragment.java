@@ -219,8 +219,6 @@ public class LocalityFragment extends Fragment implements
 			title.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-                        System.out.println("groupPosition"+groupPosition);
-                        System.out.println("childPosition"+childPosition);
                         if (groupPosition == 1) {
                             Toast.makeText(getContext(), "单击", Toast.LENGTH_SHORT).show();
                             //childSecond表示已缓存，点击可查看，添加监听器
@@ -248,7 +246,6 @@ public class LocalityFragment extends Fragment implements
 			title.setText(getGroup(groupPosition).toString());
 			ImageView image = (ImageView) view.findViewById(R.id.tubiao);
 
-			System.out.println("isExpanded----->" + isExpanded);
 			if (isExpanded) {
 				image.setBackgroundResource(R.drawable.btn_browser2);
 			} else {
