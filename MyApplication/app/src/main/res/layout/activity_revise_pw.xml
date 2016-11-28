@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp" >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/back_button_selector" >
+        </Button>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/revise"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" >
+        </TextView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider" >
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/oldPWET"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="@null"
+            android:hint="@string/oldPWHint"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            android:textColor="@color/minTextColor"
+            android:textColorHint="@color/minTextColor"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider" >
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/newPW1ET"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="@null"
+            android:hint="@string/newPW"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            android:textColor="@color/minTextColor"
+            android:textColorHint="@color/minTextColor"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider" >
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/newPW2ET"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="@null"
+            android:hint="@string/newPWAgain"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            android:textColor="@color/minTextColor"
+            android:textColorHint="@color/minTextColor"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider" >
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/enterBT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/login_button_selector"
+        android:text="@string/enterRevise"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

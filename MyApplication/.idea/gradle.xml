@@ -3,45 +3,9 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="LOCAL" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="D:\StudySoftWare\AndroidStudio\Android\gradle\gradle-2.10" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/Demo" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/clockview" />
-            <option value="$PROJECT_DIR$/eventbusdemo" />
-            <option value="$PROJECT_DIR$/frescodemo" />
-            <option value="$PROJECT_DIR$/listviewbetter" />
-            <option value="$PROJECT_DIR$/mvplogin" />
-            <option value="$PROJECT_DIR$/myviewdemo" />
-            <option value="$PROJECT_DIR$/picasso" />
-            <option value="$PROJECT_DIR$/picassodemo" />
-            <option value="$PROJECT_DIR$/refreshlistview" />
-            <option value="$PROJECT_DIR$/socketdemo" />
-            <option value="$PROJECT_DIR$/universal_imageloader" />
-          </set>
-        </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/Demo" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/clockview" />
-            <option value="$PROJECT_DIR$/eventbusdemo" />
-            <option value="$PROJECT_DIR$/frescodemo" />
-            <option value="$PROJECT_DIR$/listviewbetter" />
-            <option value="$PROJECT_DIR$/mvplogin" />
-            <option value="$PROJECT_DIR$/myviewdemo" />
-            <option value="$PROJECT_DIR$/picasso" />
-            <option value="$PROJECT_DIR$/picassodemo" />
-            <option value="$PROJECT_DIR$/refreshlistview" />
-            <option value="$PROJECT_DIR$/socketdemo" />
-            <option value="$PROJECT_DIR$/universal_imageloader" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

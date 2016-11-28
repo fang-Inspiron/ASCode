@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/radiobuttonCheck">
+
+        <ImageView
+            android:id="@+id/userIV"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="56dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:id="@+id/unloginLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userIV"
+            android:layout_marginLeft="46dp"
+            android:layout_marginRight="46dp"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal"
+            android:paddingBottom="14dp">
+
+            <TextView
+                android:id="@+id/userNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="13dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/notLogLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/m_loginBT"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/login"
+                    android:text="@string/login"
+                    android:textColor="@android:color/black"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/registerBT"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="46dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/registered"
+                    android:text="@string/registered"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/orderRL"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/item_selector">
+
+        <ImageView
+            android:id="@+id/orderIV"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="9dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/order" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/orderIV"
+            android:text="使用空间"
+
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="17dp"
+            android:drawablePadding="5dp"
+            android:text="18KB"
+            android:textColor="@color/minTextColor"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/maxDivider"></LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/collectionRL"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/item_selector"
+        >
+
+        <ImageView
+            android:id="@+id/collectionIV"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="9dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/collection" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/collectionIV"
+            android:text="@string/collection"
+            android:textSize="13dp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/maxDivider"></LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/reviseRL"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/item_selector"
+        >
+
+        <ImageView
+            android:id="@+id/changepwIV"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="9dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/password" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/changepwIV"
+            android:text="修改密码"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="17dp"
+            android:drawablePadding="5dp"
+
+            android:textColor="@color/minTextColor"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+</LinearLayout>
