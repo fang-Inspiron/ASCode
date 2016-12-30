@@ -5,8 +5,8 @@ package com.bishedemo.bean;
  */
 public class Channel {
 
-            private String channelId;
-            private String name;
+    private String channelId;
+    private String name;
 
     public Channel(String name, String id) {
         this.name = name;
@@ -14,19 +14,19 @@ public class Channel {
     }
 
     public String getChannelId() {
-                return channelId;
-            }
+        return channelId;
+    }
 
-            public void setChannelId(String channelId) {
-                this.channelId = channelId;
-            }
+    public void setChannelId(String channelId) {
+        this.channelId = channelId;
+    }
 
-            public String getName() {
-                return name;
-            }
+    public String getName() {
+        return name;
+    }
 
-            public void setName(String name) {
-                this.name = name;
-            }
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }

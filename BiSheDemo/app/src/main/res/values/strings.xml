@@ -1,6 +1,7 @@
-<resources>
+<resources
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Note</string>
-    <string name="titleETHint">请输入标题</string>
+    <string name="titleETHint">Insert title...</string>
 
     <!-- 新闻 -->
     <string name="load_error">加载失败</string>
@@ -21,4 +22,8 @@
 
     <!-- 共享过度动画 -->
     <string name="transition_photos">transition_animation_news_photos</string>
+
+
+    <!-- 闹钟 -->
+
 </resources>

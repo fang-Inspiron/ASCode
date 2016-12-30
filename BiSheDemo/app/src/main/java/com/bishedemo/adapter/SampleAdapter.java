@@ -44,7 +44,6 @@ public class SampleAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public int getItemViewType(int position) {
         return TYPE_ITEM;
-
     }
 
     @Override
@@ -98,8 +97,6 @@ public class SampleAdapter extends RecyclerView.Adapter<ViewHolder> {
             news_digest = (TextView) view.findViewById(R.id.news_digest);
             news_time = (TextView) view.findViewById(R.id.news_time);
         }
-
-
     }
 
 }

@@ -85,7 +85,7 @@
             <TextView
                 style="@style/MenuText"
                 android:drawableLeft="@drawable/coupon"
-                android:text="笑话" />
+                android:text="小助手" />
 
             <TextView
                 style="@style/MenuText"

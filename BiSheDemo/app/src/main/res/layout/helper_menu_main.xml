@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/menu_word"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_edittext"
+        android:hint="请输入菜名..."
+        android:padding="5dip"
+        android:textColorHint="#AAAAAA"
+        android:textSize="15dip" />
+
+    <EditText
+        android:id="@+id/menu_num"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_edittext"
+        android:imeOptions="actionSend"
+        android:hint="请输入要查询的条目数..."
+        android:padding="5dip"
+        android:textColorHint="#AAAAAA"
+        android:textSize="15dip" />
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/menu_swipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/menu_recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

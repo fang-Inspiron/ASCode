@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_weather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/ib_weather"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/helper_weather" />
+
+        <TextView
+            android:id="@+id/tv_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/ib_weather"
+            android:text="天气预报"
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/helper_bracket" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#eee"></LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_pm25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/ib_pm25"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/helper_pm25" />
+
+        <TextView
+            android:id="@+id/tv_pm25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/ib_pm25"
+            android:text="PM2.5"
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/helper_bracket" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#eee"></LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_parcel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/ib_parcel"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/helper_parcel" />
+
+        <TextView
+            android:id="@+id/tv_parcel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/ib_parcel"
+            android:text="快递状态查询"
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/helper_bracket" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#eee"></LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_joke"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/ib_joke"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:background="@mipmap/helper_joke" />
+
+        <TextView
+            android:id="@+id/tv_joke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/ib_joke"
+            android:text="来福岛笑话"
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/helper_bracket" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#eee"></LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_recipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/ib_recipe"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/helper_recipe" />
+
+        <TextView
+            android:id="@+id/tv_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/ib_recipe"
+            android:text="菜谱查询"
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/helper_bracket" />
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#eee"></LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_poem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/ib_poem"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/helper_poem" />
+
+        <TextView
+            android:id="@+id/tv_poem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/ib_poem"
+            android:text="藏头诗生成"
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/helper_bracket" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#eee"></LinearLayout>
+</LinearLayout>

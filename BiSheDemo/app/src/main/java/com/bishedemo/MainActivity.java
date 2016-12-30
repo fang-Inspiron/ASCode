@@ -21,7 +21,7 @@ import com.bishedemo.bean.Channel;
 import com.bishedemo.fragment.NewsFragment;
 import com.bishedemo.function.ClockActivity;
 import com.bishedemo.function.DiaryActivity;
-import com.bishedemo.function.JokeActivity;
+import com.bishedemo.function.LifeHelperActivity;
 import com.bishedemo.function.SettingActivity;
 import com.bishedemo.http.ApiUtils;
 
@@ -61,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         channelList= ApiUtils.getChannelList();
         setupViewPager(viewPager, channelList);
-
-
     }
 
     private void setupViewPager(ViewPager viewPager, List<Channel> channelList) {
@@ -70,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < channelList.size(); i++) {
             Bundle bundle = new Bundle();
-            bundle.putString("name", channelList.get(i).getChannelId());
-            bundle.putString("appTitle", channelList.get(i).getName());
+            bundle.putString("name", channelList.get(i).getChannelId());//"toutiao"根据id查询
+            bundle.putString("appTitle", channelList.get(i).getName());//“头条”根据appTitle命名
             NewsFragment newsFragment = new NewsFragment();
             newsFragment.setArguments(bundle);
             adapter.addFragment(newsFragment,channelList.get(i).getName());
@@ -135,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.setClass(this, ClockActivity.class);
                 intent.putExtra("title", title);
                 startActivity(intent);
-            } else if (title.equals("笑话")) {
-                intent.setClass(this, JokeActivity.class);
+            } else if (title.equals("小助手")) {
+                intent.setClass(this, LifeHelperActivity.class);
                 intent.putExtra("title", title);
                 startActivity(intent);
             } else if (title.equals("设置")) {

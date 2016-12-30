@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/parcel_point"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="8dp"
+        android:src="@mipmap/parcel_gray"/>
+    <ImageView
+        android:id="@+id/parcel_line"
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/parcel_point"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/parcel_line_gray"/>
+
+    <TextView
+        android:id="@+id/parcel_context"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/parcel_point"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="2dp"
+        android:text="内容"
+        android:textSize="16sp"
+        android:textColor="@color/parcel_gray"/>
+
+    <TextView
+        android:id="@+id/parcel_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/parcel_context"
+        android:layout_alignLeft="@id/parcel_context"
+        android:layout_marginBottom="10dp"
+        android:text="时间"
+        android:textSize="14sp"
+        android:textColor="@color/parcel_gray"/>
+
+</RelativeLayout>

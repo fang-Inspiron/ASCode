@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:text="12/13"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
+
+        <TextView
+            android:id="@+id/day_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:text="白天："
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/day_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@id/day_text"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/night_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/day_text"
+            android:layout_toLeftOf="@+id/night_img"
+            android:text="夜间："
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/night_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/day_img"
+            android:layout_marginRight="50dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/day_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/day_text"
+            android:layout_below="@id/day_text"
+            android:layout_marginTop="14dp"
+            android:text="白天天气："
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/night_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/night_text"
+            android:layout_below="@id/night_text"
+            android:layout_marginTop="14dp"
+            android:text="夜间天气："
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+
+
+        <TextView
+            android:id="@+id/day_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/day_text"
+            android:layout_below="@id/day_weather"
+            android:layout_marginTop="14dp"
+            android:text="白天温度："
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/night_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/night_weather"
+            android:layout_below="@id/night_weather"
+            android:layout_marginTop="14dp"
+            android:text="夜间温度："
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+
+
+        <TextView
+            android:id="@+id/day_wind_power"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/day_text"
+            android:layout_below="@id/day_temperature"
+            android:layout_marginTop="14dp"
+            android:text="白天风力："
+            android:textColor="#000"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/night_wind_power"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/night_temperature"
+            android:layout_below="@id/night_temperature"
+            android:layout_marginTop="14dp"
+            android:text="夜间风力："
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/day_wind_direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/day_text"
+            android:layout_below="@id/day_wind_power"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="10dp"
+            android:text="白天风向："
+            android:textColor="#000"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/night_wind_direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/night_wind_power"
+            android:layout_below="@id/night_wind_power"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="10dp"
+            android:text="夜间风向："
+            android:textColor="#000"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</LinearLayout>

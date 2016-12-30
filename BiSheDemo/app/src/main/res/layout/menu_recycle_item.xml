@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/menu_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/menu_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:textSize="16sp"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/menu_yuanliao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:textSize="16sp"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/menu_tiaoliao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:textSize="16sp"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/menu_zuofa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:textSize="16sp"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/menu_texing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:textSize="16sp"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/menu_tishi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:textSize="16sp"
+        android:textColor="#000"/>
+</LinearLayout>

@@ -23,13 +23,14 @@ import android.widget.ImageButton;
 import com.bishedemo.R;
 import com.bishedemo.note.WriteDialogListener;
 import com.bishedemo.note.WritePadDialog;
-import com.bishedemo.sqlite.QnoteSQLiteOpenHelper;
 import com.bishedemo.utils.GetPathFromUri4kitkat;
+import com.bishedemo.utils.SDHelper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import jp.wasabeef.richeditor.RichEditor;
 
@@ -113,19 +114,21 @@ public class DiaryDetailActivity extends Activity implements View.OnClickListene
 
     private void saveNote() {
         showDialog();
-        SQLiteDatabase sq = new QnoteSQLiteOpenHelper(DiaryDetailActivity.this, "note.db").getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("notetime", System.currentTimeMillis());
-        values.put("notetext", noteText);
-        values.put("notetitle", noteTitle);
+        String str = mEditor.getHtml();
+        System.out.println("###########"+str);
+        SDHelper sdHelper = new SDHelper(getApplicationContext(), str);
         try {
-            sq.insert("notes", null, values);
+            sdHelper.createSDCardDir();
+            sdHelper.writeStringToTxt();
         } catch (Exception e) {
-
+            e.printStackTrace();
         } finally {
             dismissDialog();
+            finish();
         }
     }
+
+
 
     private void initEditor() {
         mEditor.setEditorFontSize(22);
@@ -154,7 +157,7 @@ public class DiaryDetailActivity extends Activity implements View.OnClickListene
     public void showDialog() {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("正在保存。。。");
+            progressDialog.setTitle("正在保存...");
         }
         progressDialog.show();
     }
@@ -172,7 +175,7 @@ public class DiaryDetailActivity extends Activity implements View.OnClickListene
                 if(noteTitle.length()>0) {
                     saveNote();
                 }
-                finish();
+                //finish();
                 break;
             case R.id.action_bold:
                 if(!isBold) {

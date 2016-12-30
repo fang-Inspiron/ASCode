@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="primary_text">#1A1D1F</color>
     <color name="minTextColor">#949494</color>
+    <color name="parcel_green">#419967</color>
+    <color name="parcel_gray">#a7a7a7</color>
 
 
     <color name="night_mask">#00000000</color>

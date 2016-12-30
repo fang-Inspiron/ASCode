@@ -62,6 +62,8 @@ public class DiaryActivity extends UniversalActivity{
     private void initDatas() {
         datas = new ArrayList<>();
         ListNoteBean bean = new ListNoteBean("1", "Demo", "2016/11/20 17:13", "ASADDGHAGDH");
+        ListNoteBean bean1 = new ListNoteBean("2", "Demo2", "2016/11/28 17:13", "ASADDGHAGDH");
         datas.add(bean);
+        datas.add(bean1);
     }
 }
