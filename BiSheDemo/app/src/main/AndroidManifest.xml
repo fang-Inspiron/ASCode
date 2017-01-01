@@ -55,6 +55,7 @@
         <activity android:name=".lifehelper.ParcelActivity" />
         <activity android:name=".lifehelper.PoemActivity" />
 
+        <receiver android:name=".utils.AlarmBroadcastReceiver"></receiver>
     </application>
 
 </manifest>

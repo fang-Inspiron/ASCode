@@ -7,37 +7,16 @@ import java.text.SimpleDateFormat;
  */
 
 public class ListNoteBean {
-    private String id;
-    private long updateTime;
     private String name;
     private String date;
-    private String text;
 
-    public ListNoteBean(String id, String name, String date, String text) {
-        this.id = id;
+    public ListNoteBean( String name, String date) {
         this.name = name;
         this.date = date;
-        this.text = text;
     }
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public long getUpdatetime() {
-        return updateTime;
-    }
-
-    public void setUpdatetime(long updateTime) {
-        this.updateTime = updateTime;
-        setDate(updateTime);
-    }
 
     public String getName() {
         return name;
@@ -55,11 +34,4 @@ public class ListNoteBean {
         date=format.format(time);
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
 }

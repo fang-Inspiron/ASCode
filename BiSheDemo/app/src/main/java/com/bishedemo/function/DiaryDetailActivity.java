@@ -31,6 +31,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import jp.wasabeef.richeditor.RichEditor;
 
@@ -88,6 +90,7 @@ public class DiaryDetailActivity extends Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diary_detail_layout);
 
+
         initView();
         initEditor();
         getData();
@@ -116,16 +119,17 @@ public class DiaryDetailActivity extends Activity implements View.OnClickListene
         showDialog();
         String str = mEditor.getHtml();
         System.out.println("###########"+str);
-        SDHelper sdHelper = new SDHelper(getApplicationContext(), str);
-        try {
-            sdHelper.createSDCardDir();
-            sdHelper.writeStringToTxt();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            dismissDialog();
-            finish();
-        }
+
+        Date date = new Date();
+        String dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        String fileName = dateFormat+titleET.getText().toString()+".html";
+
+
+            SDHelper.createSDCardDir();
+            SDHelper.writeStringToTxt(fileName, str);
+
+        dismissDialog();
+        finish();
     }
 
 
@@ -146,9 +150,9 @@ public class DiaryDetailActivity extends Activity implements View.OnClickListene
     private void getData() {
         try {
             Intent intent = getIntent();
-            Bundle bundle = intent.getExtras();
-            titleET.setText(bundle.getString("title"));
-            mEditor.setHtml(bundle.getString("text"));
+            String fileName = intent.getStringExtra("fileName");
+            titleET.setText(fileName);
+            mEditor.setHtml(SDHelper.getAFileData(fileName+".html"));
         }catch (Exception e){
             System.out.println(e);
         }
