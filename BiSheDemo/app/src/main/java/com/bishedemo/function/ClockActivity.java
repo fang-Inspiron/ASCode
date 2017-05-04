@@ -1,144 +1,215 @@
 package com.bishedemo.function;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.database.Cursor;
+import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.bishedemo.R;
 import com.bishedemo.UniversalActivity;
-import com.bishedemo.utils.AlarmBroadcastReceiver;
+import com.bishedemo.clock.CallAlarm;
 
+import java.io.File;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
 
 /**
- * Created by fang on 2016/11/15.
+ * Created by fang on 2017/5/3.
  */
 
+public class ClockActivity extends UniversalActivity {
+    Button buttonTime;
+    Button buttonRing;
+    Button buttonDelete;
+    TextView textTime;
+    TextView textDelete;
 
+    long time;
+    String time1String = null;
+    String defalutString = "目前无设置";
 
-public class ClockActivity extends UniversalActivity implements View.OnClickListener{
-
-    private static final String TAG = "AlarmActivity";
-    AlarmManager alarmManager;
-    Calendar calendar = Calendar.getInstance(Locale.CHINESE);
-    Button setTime;
-    Button setRing;
-    Button setOver;
-    Uri ringUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+    Calendar c = Calendar.getInstance();
+    /* 自定义的类型 */
+    public static final int CODE_ALARM = 1;
+    /**
+     * 闹钟铃声文件夹
+     * /system/media/audio/alarms          系统闹钟铃声
+     * /sdcard/music/alarms                用户闹钟铃声
+     */
+    private String strAlarmFolder = "/system/media/audio/alarms";
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.clock_test);
+        setContentView(R.layout.clock_main);
 
-        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        setTime = (Button) findViewById(R.id.setTime);
-        setRing = (Button) findViewById(R.id.setRing);
-        setOver = (Button) findViewById(R.id.setOver);
+        //取得活动的Preferences对象
+        SharedPreferences settings = getPreferences(Activity.MODE_PRIVATE);
+        time1String = settings.getString("TIME1", defalutString);
 
-        setTime.setOnClickListener(this);
-        setRing.setOnClickListener(this);
-        setOver.setOnClickListener(this);
+        findId();
+        InitButtonTime();
+        InitButtonRing();
+        InitButtonDelete();
+        textDelete.setText(time1String);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.setTime: setTime();break;
-            case R.id.setRing: setRingtone();break;
-            case R.id.setOver: setAlarm(calendar);break;
+    public void InitButtonRing() {
 
-        }
-    }
-
-    //启动闹玲，设置闹玲
-    private void setAlarm(Calendar calendar){
-        Intent intent = new Intent();
-        intent.setClass(this, AlarmBroadcastReceiver.class);
-        intent.putExtra("msg", "Get up!Get up!");
-        intent.putExtra("ringURI", ringUri.toString());
-        Log.d(TAG, ringUri.toString());
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), pendingIntent);
-    }
-    //设置时间
-    private void setTime(){
-        Date date = new Date();
-        calendar.setTime(date);
-        int hour = calendar.get(Calendar.HOUR);
-        int minute = calendar.get(Calendar.MINUTE);
-        new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+        buttonRing.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                calendar.set(Calendar.HOUR,hour);
-                calendar.set(Calendar.MINUTE,minute);
+            public void onClick(View v) {
+                if (hasFolder(strAlarmFolder)) {
+                    // 打开系统铃声设置
+                    Intent intent = new Intent(
+                            RingtoneManager.ACTION_RINGTONE_PICKER);
+                    // 设置铃声类型和title
+                    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE,
+                            RingtoneManager.TYPE_ALARM);
+                    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE,
+                            "设置闹钟铃声");
+                    // 当设置完成之后返回到当前的Activity
+                    startActivityForResult(intent, CODE_ALARM);
+                }
             }
-        }, hour, minute, true).show();
+        });
     }
-    //设置闹玲铃声
-    private void setRingtone(){
-        Intent intent = new Intent();
-        intent.setAction(RingtoneManager.ACTION_RINGTONE_PICKER);
-        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, false);
-        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "设置闹玲铃声");
-        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALL);
-        Uri pickedUri = RingtoneManager.getActualDefaultRingtoneUri(this,RingtoneManager.TYPE_ALARM);
-        if (pickedUri!=null) {
-            intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI,pickedUri);
-            ringUri = pickedUri;
-        }
-        startActivityForResult(intent, 1);
-    }
+
+    /**
+     * 当设置铃声之后的回调函数
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode!=RESULT_OK) {
+        if (resultCode != RESULT_OK) {
             return;
         }
-        switch (requestCode) {
-            case 1:
-                //获取选中的铃声的URI
-                Uri pickedURI = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
-                Log.i(TAG,pickedURI.toString());
-                RingtoneManager.setActualDefaultRingtoneUri(this, RingtoneManager.TYPE_ALARM, pickedURI);
-                getName(RingtoneManager.TYPE_ALARM);
-                break;
-            default:
-                break;
-        }
-    }
-    private void getName(int type){
-        Uri pickedUri = RingtoneManager.getActualDefaultRingtoneUri(this, type);
-        Log.i(TAG,pickedUri.toString());
-        Cursor cursor = this.getContentResolver().query(pickedUri, new String[]{MediaStore.Audio.Media.TITLE}, null, null, null);
-        if (cursor!=null) {
-            if (cursor.moveToFirst()) {
-                String ring_name = cursor.getString(0);
-                Log.i(TAG,ring_name);
-                String[] c = cursor.getColumnNames();
-                for (String string : c) {
-                    Log.i(TAG,string);
-                }
+        // 得到我们选择的铃声
+        Uri pickedUri = data
+                .getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+        if (pickedUri != null) {
+            switch (requestCode) {
+                case CODE_ALARM:
+                    // 将我们选择的铃声设置成为默认闹钟铃声
+                    RingtoneManager.setActualDefaultRingtoneUri(this,
+                            RingtoneManager.TYPE_ALARM, pickedUri);
+                    break;
             }
-            cursor.close();
         }
+
+        Intent intent = new Intent(ClockActivity.this, CallAlarm.class);
+        intent.putExtra("ringUri", pickedUri.toString());
+        PendingIntent sender = PendingIntent.getBroadcast(
+                ClockActivity.this, 0, intent, 0);
+        AlarmManager am;
+        am = (AlarmManager) getSystemService(ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), sender);
+        Toast.makeText(ClockActivity.this, "已设置完成！", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * 检测是否存在指定的文件夹,如果不存在则创建
+     *
+     * @param strFolder 文件夹路径
+     */
+    private boolean hasFolder(String strFolder) {
+        boolean btmp = false;
+        File f = new File(strFolder);
+        if (!f.exists()) {
+            if (f.mkdirs()) {
+                btmp = true;
+            } else {
+                btmp = false;
+            }
+        } else {
+            btmp = true;
+        }
+        return btmp;
+    }
 
+    public void InitButtonTime() {
+        buttonTime.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                c.setTimeInMillis(System.currentTimeMillis());
+                int mHour = c.get(Calendar.HOUR_OF_DAY);
+                int mMinute = c.get(Calendar.MINUTE);
+
+                new TimePickerDialog(ClockActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+                                c.setTimeInMillis(System.currentTimeMillis());
+                                c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                                c.set(Calendar.MINUTE, minute);
+                                c.set(Calendar.SECOND, 0);
+                                c.set(Calendar.MILLISECOND, 0);
+                                time = c.getTimeInMillis();
+
+                                String tmpS = format(hourOfDay) + "：" + format(minute);
+                                textTime.setText(tmpS);
+                                textDelete.setText(tmpS);
+
+                                //SharedPreferences保存数据，并提交
+                                SharedPreferences time1Share = getPreferences(0);
+                                SharedPreferences.Editor editor = time1Share.edit();
+                                editor.putString("TIME1", tmpS);
+                                editor.commit();
+
+                                Toast.makeText(ClockActivity.this, "设置闹钟时间为" + tmpS,
+                                        Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+                        }, mHour, mMinute, true).show();
+            }
+        });
+
+    }
+
+    public void InitButtonDelete() {
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(ClockActivity.this, CallAlarm.class);
+                PendingIntent sender = PendingIntent.getBroadcast(
+                        ClockActivity.this, 0, intent, 0);
+                AlarmManager am;
+                am = (AlarmManager) getSystemService(ALARM_SERVICE);
+                am.cancel(sender);
+                Toast.makeText(ClockActivity.this, "闹钟时间删除",
+                        Toast.LENGTH_SHORT).show();
+                textDelete.setText("目前无设置");
+
+                SharedPreferences time1Share = getPreferences(0);
+                SharedPreferences.Editor editor = time1Share.edit();
+                editor.putString("TIME1", "目前无设置");
+                editor.commit();
+            }
+        });
+
+    }
+
+    private String format(int x) {
+        String s = "" + x;
+        if (s.length() == 1) s = "0" + s;
+        return s;
+    }
+
+    private void findId() {
+        buttonTime = (Button) findViewById(R.id.buttonTime);
+        buttonRing = (Button) findViewById(R.id.buttonRing);
+        buttonDelete = (Button) findViewById(R.id.buttonDelete);
+        textTime = (TextView) findViewById(R.id.textTime);
+        textDelete = (TextView) findViewById(R.id.textDelete);
+    }
 }

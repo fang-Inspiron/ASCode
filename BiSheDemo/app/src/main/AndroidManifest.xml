@@ -23,7 +23,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,9 +36,10 @@
         <activity
             android:name=".function.DiaryActivity"
             android:theme="@style/UniversalTheme" />
-        <activity
-            android:name=".function.ClockActivity"
-            android:theme="@style/UniversalTheme" />
+
+        <activity android:name=".function.ClockActivity"
+            android:theme="@style/UniversalTheme"/>
+
         <activity
             android:name=".function.LifeHelperActivity"
             android:theme="@style/UniversalTheme" />
@@ -55,7 +55,12 @@
         <activity android:name=".lifehelper.ParcelActivity" />
         <activity android:name=".lifehelper.PoemActivity" />
 
-        <receiver android:name=".utils.AlarmBroadcastReceiver"></receiver>
+        <activity android:name=".clock.AlarmAlert"/>
+        <receiver android:name=".clock.CallAlarm"/>
+
+        <activity android:name=".setting.AboutActivity"/>
+        <activity android:name=".setting.IntroduceActivity"/>
+
     </application>
 
 </manifest>
