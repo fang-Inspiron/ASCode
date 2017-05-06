@@ -113,4 +113,14 @@
 
     <string name="introduce_name">"生活便携备忘录"</string>
     <string name="setting_introduce">"    为忙碌在各种工作的人减轻压力，放松娱乐。内容有四个模块：新闻、轻松一刻、日记、记事本。新闻模块是从接口获取数据，分类进行图文显示，还可点击查看具体某一条新闻并且分享。轻松一刻模块是从接口获取笑话或美图进行显示，还可以分享给好友。日记能定位并查询天气，编写文本能写文字、插入图片。记事本相当于一个闹钟提醒功能的记事。对于有日记习惯但出差在外的人，方便快速写日记，方便工作内容提醒。"</string>
+
+    <!-- EditNoteActivity -->
+    <string name="note_editor_title">请输入标题</string>
+    <string name="save_note">保存</string>
+    <string name="note_saved">笔记保存成功</string>
+    <string name="title_empty">标题为空,请输入标题 ＾＿＾</string>
+    <string name="content_empty">内容为空,请输入内容 ＾＿＾</string>
+
+    <!-- NoteActivity-->
+    <string name="create_note">新建笔记</string>
 </resources>

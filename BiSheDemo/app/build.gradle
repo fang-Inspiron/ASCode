@@ -35,4 +35,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'org.ligboy.retrofit2:converter-fastjson:2.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile files('libs/umeng-analytics-v5.6.1.jar')
+    compile files('libs/common-lang3.jar')
+    compile files('libs/photo-view.jar')
 }

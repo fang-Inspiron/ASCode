@@ -20,10 +20,10 @@ import android.widget.TextView;
 import com.bishedemo.bean.Channel;
 import com.bishedemo.fragment.NewsFragment;
 import com.bishedemo.function.ClockActivity;
-import com.bishedemo.function.DiaryActivity;
 import com.bishedemo.function.LifeHelperActivity;
 import com.bishedemo.function.SettingActivity;
 import com.bishedemo.http.ApiUtils;
+import com.bishedemo.note.ui.activity.NoteActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             String title = ((TextView) view).getText().toString();
             Intent intent = new Intent();
             if (title.equals("日记")) {
-                intent.setClass(this, DiaryActivity.class);
+                intent.setClass(this, NoteActivity.class);
                 intent.putExtra("title", title);
                 startActivity(intent);
             } else if (title.equals("闹钟")) {

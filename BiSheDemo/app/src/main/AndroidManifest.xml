@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -15,6 +16,8 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -33,9 +36,10 @@
         <activity
             android:name=".UniversalActivity"
             android:theme="@style/UniversalTheme" />
-        <activity
-            android:name=".function.DiaryActivity"
-            android:theme="@style/UniversalTheme" />
+
+        <activity android:name=".note.ui.activity.NoteActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity android:name=".function.ClockActivity"
             android:theme="@style/UniversalTheme"/>
@@ -46,7 +50,6 @@
         <activity
             android:name=".function.SettingActivity"
             android:theme="@style/UniversalTheme" />
-        <activity android:name=".function.DiaryDetailActivity" />
         <activity android:name=".function.NewsDetailActivity" />
         <activity android:name=".lifehelper.WeatherActivity" />
         <activity android:name=".lifehelper.Pm25Activity" />
@@ -61,6 +64,35 @@
         <activity android:name=".setting.AboutActivity"/>
         <activity android:name=".setting.IntroduceActivity"/>
 
+
+
+        <!-- 便签编辑界面 -->
+        <activity
+            android:name="com.bishedemo.note.ui.activity.NoteEditActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!-- 便签详情界面 -->
+        <activity
+            android:name="com.bishedemo.note.ui.activity.NoteDetailActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+
+        <!-- 便签再编辑界面 -->
+        <activity
+            android:name="com.bishedemo.note.ui.activity.NoteReEditActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+
+        <!-- 友盟 配置 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5644729867e58e76ea001298" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="app store" />
+        <!-- END  友盟配置 -->
     </application>
 
 </manifest>
