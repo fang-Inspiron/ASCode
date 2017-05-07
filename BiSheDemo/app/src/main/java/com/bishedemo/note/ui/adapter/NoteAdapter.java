@@ -93,31 +93,27 @@ public class NoteAdapter extends BaseAdapter {
                 @Override
                 public boolean onLongClick(View view) {
 
-                    mNoteList.remove(note);
-                    notifyDataSetChanged();
-                    DatabaseAccessFactory.getInstance(mContext).noteAccessor().delete(note);
-
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);  //先得到构造器
-//                    builder.setTitle("提示");//设置标题
-//                    builder.setMessage("是否确认删除?"); //设置内容
-//                    builder.setPositiveButton("删除", new DialogInterface.OnClickListener() { //设置确定按钮
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            mNoteList.remove(note);
-//                            notifyDataSetChanged();
-//                            DatabaseAccessFactory.getInstance(mContext).noteAccessor().delete(note);
-//                            dialog.dismiss(); //关闭dialog
-//                            Toast.makeText(mContext, "确认" + which, Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() { //设置取消按钮
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            dialog.dismiss();
-//                            Toast.makeText(mContext, "取消" + which, Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);  //先得到构造器
+                    builder.setTitle("提示");//设置标题
+                    builder.setMessage("是否确认删除?"); //设置内容
+                    builder.setPositiveButton("删除", new DialogInterface.OnClickListener() { //设置确定按钮
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mNoteList.remove(note);
+                            notifyDataSetChanged();
+                            DatabaseAccessFactory.getInstance(mContext).noteAccessor().delete(note);
+                            dialog.dismiss(); //关闭dialog
+                            Toast.makeText(mContext, "删除成功！", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() { //设置取消按钮
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    //参数都设置完成了，创建并显示出来
+                    builder.create().show();
                     return false;
                 }
             });
