@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.Html;
 import android.text.Spannable;
@@ -43,7 +44,7 @@ import com.bishedemo.note.utils.ToastUtils;
  * 
  * @author RenHui
  */
-public class NoteReEditActivity extends Activity implements OnClickListener {
+public class NoteReEditActivity extends AppCompatActivity implements OnClickListener {
 
 	private static final int REQUEST_CODE_PICK_IMAGE = 1023;
 	private static final int REQUEST_CODE_CAPTURE_CAMEIA = 1022;
@@ -235,7 +236,7 @@ public class NoteReEditActivity extends Activity implements OnClickListener {
 				// 跳转
 				Intent intent = new Intent(NoteReEditActivity.this, NoteActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);
 				finish();
 			}

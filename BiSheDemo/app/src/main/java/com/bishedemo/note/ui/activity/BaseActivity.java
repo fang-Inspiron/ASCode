@@ -3,7 +3,10 @@ package com.bishedemo.note.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
+import com.bishedemo.UniversalActivity;
 import com.umeng.analytics.MobclickAgent;
 
 /**
@@ -11,7 +14,7 @@ import com.umeng.analytics.MobclickAgent;
  * 
  * @author renhui
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends UniversalActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

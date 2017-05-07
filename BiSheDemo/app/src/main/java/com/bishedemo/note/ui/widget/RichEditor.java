@@ -21,6 +21,7 @@ import android.widget.ScrollView;
 
 import com.bishedemo.R;
 import com.bishedemo.imageloader.core.ImageLoader;
+import com.bishedemo.imageloader.core.ImageLoaderConfiguration;
 import com.bishedemo.note.module.EditData;
 
 import java.util.ArrayList;
@@ -301,7 +302,9 @@ public class RichEditor extends ScrollView {
 		final RelativeLayout imageLayout = createImageLayout();
 		RichImageView imageView = (RichImageView) imageLayout.findViewById(R.id.edit_imageView);
 		imageView.setPicturePath(imagePath);
-		ImageLoader.getInstance().displayImage("file://" + imagePath, imageView);
+		ImageLoader im = ImageLoader.getInstance();
+		im.init(ImageLoaderConfiguration.createDefault(getContext()));
+		im.displayImage("file://" + imagePath, imageView);
 		int imageHeight = getWidth() * bmp.getHeight() / bmp.getWidth();
 		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, imageHeight);
 		imageView.setLayoutParams(lp);

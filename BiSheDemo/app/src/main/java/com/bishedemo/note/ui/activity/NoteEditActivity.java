@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,6 +20,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.TypedValue;
@@ -29,12 +29,15 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.bishedemo.R;
 import com.bishedemo.imageloader.core.DisplayImageOptions;
 import com.bishedemo.imageloader.core.ImageLoader;
+import com.bishedemo.imageloader.core.ImageLoaderConfiguration;
 import com.bishedemo.imageloader.core.assist.ImageScaleType;
 import com.bishedemo.imageloader.core.assist.ImageSize;
 import com.bishedemo.note.module.EditData;
@@ -51,134 +54,137 @@ import com.bishedemo.note.utils.ToastUtils;
 
 /**
  * 编辑Note页面
- * 
+ *
  * @author RenHui
- * 
  */
 @SuppressLint("SimpleDateFormat")
 public class NoteEditActivity extends BaseActivity {
-	private static final int LONG_BLOG_WIDTH = 440; // 长微博最佳宽度
+    private static final int LONG_BLOG_WIDTH = 440; // 长微博最佳宽度
 
-	private static final int REQUEST_CODE_PICK_IMAGE = 1023;
-	private static final int REQUEST_CODE_CAPTURE_CAMEIA = 1022;
+    private static final int REQUEST_CODE_PICK_IMAGE = 1023;
+    private static final int REQUEST_CODE_CAPTURE_CAMEIA = 1022;
 
-	private static final File PHOTO_DIR = new File(Environment.getExternalStorageDirectory() + "/DCIM/Camera");
+    private static final File PHOTO_DIR = new File(Environment.getExternalStorageDirectory() + "/DCIM/Camera");
 
-	private String mPageTitle;
-	
-	private String mNoteTitle;
-	private boolean mIsToEdit;
+    private String mPageTitle;
 
-	private ActionBar mActionBar;
-	private TextView mActionBarTitle;
-	private EditText mTitleEditor;
-	private RichEditor mContentEditor;
-	private View mBtn1, mBtn2, mBtn3, mBtn4;
-	private OnClickListener mBtnListener;
+    private String mNoteTitle;
+    private boolean mIsToEdit;
 
-	private File mCurrentPhotoFile;// 照相机拍照得到的图片
+    private ActionBar mActionBar;
+    private TextView mActionBarTitle;
+    private EditText mTitleEditor;
+    private RichEditor mContentEditor;
+    private View mBtn1, mBtn2, mBtn3, mBtn4;
+    private OnClickListener mBtnListener;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_note);
+    private File mCurrentPhotoFile;// 照相机拍照得到的图片
 
-		Intent intent = getIntent();
-		mPageTitle = intent.getStringExtra("next_page_title");
-		mNoteTitle = intent.getStringExtra("note_title");
-		mIsToEdit =intent.getBooleanExtra("to_edit", false);
-		
-		setUpActionBar();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_note);
 
-		mTitleEditor = (EditText) findViewById(R.id.editor_title);
-		mContentEditor = (RichEditor) findViewById(R.id.richEditor);
-		mBtnListener = new OnClickListener() {
+        Intent intent = getIntent();
+        mPageTitle = intent.getStringExtra("next_page_title");
+        mNoteTitle = intent.getStringExtra("note_title");
+        mIsToEdit = intent.getBooleanExtra("to_edit", false);
 
-			@Override
-			public void onClick(View v) {
-				mContentEditor.hideKeyBoard();
-				if (v.getId() == mBtn1.getId()) {
-					// 打开系统相册
-					Intent intent = new Intent(Intent.ACTION_PICK);
-					intent.setType("image/*");// 相片类型
-					startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
-				} else if (v.getId() == mBtn2.getId()) {
-					// 打开相机
-					openCamera();
-				} else if (v.getId() == mBtn3.getId()) {
-					// 手画板
-					WritePadDialog mWritePadDialog = new WritePadDialog(NoteEditActivity.this,
-						new WriteDialogListener() {
-							
-							@Override
-							public void onPaintDone(Object object) {
-								Bitmap bitmap = (Bitmap) object;
-								String path = ImageUtils.createSignFile(bitmap);
-								insertBitmap(path);
-							}
-						});
-					mWritePadDialog.show();
-				} else if (v.getId() == mBtn4.getId()) {
-					// 生成长微博
-					newLongBlog();
-				}
-			}
-		};
+        //setTitle("Note");
+        setUpActionBar();
 
-		mBtn1 = findViewById(R.id.button1);
-		mBtn2 = findViewById(R.id.button2);
-		mBtn3 = findViewById(R.id.button3);
-		mBtn4 = findViewById(R.id.share);
+        mTitleEditor = (EditText) findViewById(R.id.editor_title);
+        mContentEditor = (RichEditor) findViewById(R.id.richEditor);
+        mBtnListener = new OnClickListener() {
 
-		mBtn1.setOnClickListener(mBtnListener);
-		mBtn2.setOnClickListener(mBtnListener);
-		mBtn3.setOnClickListener(mBtnListener);
-		mBtn4.setOnClickListener(mBtnListener);
-	}
+            @Override
+            public void onClick(View v) {
+                mContentEditor.hideKeyBoard();
+                if (v.getId() == mBtn1.getId()) {
+                    // 打开系统相册
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");// 相片类型
+                    startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
+                } else if (v.getId() == mBtn2.getId()) {
+                    // 打开相机
+                    openCamera();
+                } else if (v.getId() == mBtn3.getId()) {
+                    // 手画板
+                    WritePadDialog mWritePadDialog = new WritePadDialog(NoteEditActivity.this,
+                            new WriteDialogListener() {
 
-	/** 添加ActionBar */
-	private void setUpActionBar() {
-		mActionBar = getActionBar();
-		mActionBar.setDisplayShowTitleEnabled(true);
-		mActionBar.setHomeButtonEnabled(false);
-		mActionBar.setDisplayHomeAsUpEnabled(false);
-		mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		mActionBar.setDisplayShowCustomEnabled(true);
-		mActionBarTitle = new TextView(this, null);
-		mActionBarTitle.setId(R.id.actionbar_finish);
-		mActionBarTitle.setCompoundDrawablesWithIntrinsicBounds(
-				R.drawable.img_title_back, 0, 0, 0);
-		mActionBarTitle.setMaxLines(2);
-		mActionBarTitle.setEllipsize(TruncateAt.END);
-		mActionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
-		mActionBarTitle.setTextColor(getResources().getColor(R.color.pink));
-		mActionBarTitle.setGravity(Gravity.CENTER_VERTICAL);
-		mActionBarTitle.setClickable(true);
-		mActionBarTitle.setPadding(5, 0, 32, 0);
-		mActionBarTitle.setText(mPageTitle);
-		mActionBarTitle.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
-		mActionBar.setCustomView(mActionBarTitle);
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
-    	if (mIsToEdit) {
-			mTitleEditor.setText(mNoteTitle);
-		}
-		
-	}
+                                @Override
+                                public void onPaintDone(Object object) {
+                                    Bitmap bitmap = (Bitmap) object;
+                                    String path = ImageUtils.createSignFile(bitmap);
+                                    insertBitmap(path);
+                                }
+                            });
+                    mWritePadDialog.show();
+                } else if (v.getId() == mBtn4.getId()) {
+                    // 生成长微博
+                    newLongBlog();
+                }
+            }
+        };
 
-	@Override
-	protected void onStop() {
-		super.onStop();
-	}
+        mBtn1 = findViewById(R.id.button1);
+        mBtn2 = findViewById(R.id.button2);
+        mBtn3 = findViewById(R.id.button3);
+        mBtn4 = findViewById(R.id.share);
+
+        mBtn1.setOnClickListener(mBtnListener);
+        mBtn2.setOnClickListener(mBtnListener);
+        mBtn3.setOnClickListener(mBtnListener);
+        mBtn4.setOnClickListener(mBtnListener);
+    }
+
+
+    /**
+     * 添加ActionBar
+     */
+    private void setUpActionBar() {
+        mActionBar = getSupportActionBar();
+        mActionBar.setDisplayShowTitleEnabled(true);
+        mActionBar.setHomeButtonEnabled(false);
+        mActionBar.setDisplayHomeAsUpEnabled(false);
+        mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        mActionBar.setDisplayShowCustomEnabled(true);
+        mActionBarTitle = new TextView(this, null);
+        mActionBarTitle.setId(R.id.actionbar_finish);
+        mActionBarTitle.setCompoundDrawablesWithIntrinsicBounds(
+                R.drawable.img_title_back, 0, 0, 0);
+        mActionBarTitle.setMaxLines(2);
+        mActionBarTitle.setEllipsize(TruncateAt.END);
+        mActionBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
+        mActionBarTitle.setTextColor(getResources().getColor(R.color.pink));
+        mActionBarTitle.setGravity(Gravity.CENTER_VERTICAL);
+        mActionBarTitle.setClickable(true);
+        mActionBarTitle.setPadding(5, 0, 32, 0);
+        mActionBarTitle.setText(mPageTitle);
+        mActionBarTitle.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        mActionBar.setCustomView(mActionBarTitle);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mIsToEdit) {
+            mTitleEditor.setText(mNoteTitle);
+        }
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -209,9 +215,9 @@ public class NoteEditActivity extends BaseActivity {
 				note.createTime = System.currentTimeMillis();
 				note.modifyTime = System.currentTimeMillis();
 				DatabaseAccessFactory.getInstance(NoteEditActivity.this).noteAccessor().insert(note);
-				
+
 				ToastUtils.show(R.string.note_saved);
-				
+
 				// 隐藏软键盘
 				InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(mActionBarTitle.getWindowToken(), 0);
@@ -219,7 +225,7 @@ public class NoteEditActivity extends BaseActivity {
 				Intent intent = new Intent(NoteEditActivity.this,
 						NoteActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);
 				finish();
 			}
@@ -227,180 +233,186 @@ public class NoteEditActivity extends BaseActivity {
 		return super.onCreateOptionsMenu(menu);
 	}
 
-	protected void openCamera() {
-		try {
-			// Launch camera to take photo for selected contact
-			PHOTO_DIR.mkdirs();// 创建照片的存储目录
-			mCurrentPhotoFile = new File(PHOTO_DIR, getPhotoFileName());// 给新照的照片文件命名
-			final Intent intent = getTakePickIntent(mCurrentPhotoFile);
-			startActivityForResult(intent, REQUEST_CODE_CAPTURE_CAMEIA);
-		} catch (ActivityNotFoundException e) {
-		}
-	}
+    protected void openCamera() {
+        try {
+            // Launch camera to take photo for selected contact
+            PHOTO_DIR.mkdirs();// 创建照片的存储目录
+            mCurrentPhotoFile = new File(PHOTO_DIR, getPhotoFileName());// 给新照的照片文件命名
+            final Intent intent = getTakePickIntent(mCurrentPhotoFile);
+            startActivityForResult(intent, REQUEST_CODE_CAPTURE_CAMEIA);
+        } catch (ActivityNotFoundException e) {
+        }
+    }
 
-	public static Intent getTakePickIntent(File f) {
-		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE, null);
-		intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-		return intent;
-	}
+    public static Intent getTakePickIntent(File f) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE, null);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+        return intent;
+    }
 
-	/** 用当前时间给取得的图片命名 */
-	private String getPhotoFileName() {
-		Date date = new Date(System.currentTimeMillis());
-		SimpleDateFormat dateFormat = new SimpleDateFormat(
-				"'IMG'_yyyy_MM_dd_HH_mm_ss");
-		return dateFormat.format(date) + ".jpg";
-	}
+    /**
+     * 用当前时间给取得的图片命名
+     */
+    private String getPhotoFileName() {
+        Date date = new Date(System.currentTimeMillis());
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "'IMG'_yyyy_MM_dd_HH_mm_ss");
+        return dateFormat.format(date) + ".jpg";
+    }
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (resultCode != RESULT_OK) {
-			return;
-		}
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != RESULT_OK) {
+            return;
+        }
 
-		if (requestCode == REQUEST_CODE_PICK_IMAGE) {
-			Uri uri = data.getData();
-			insertBitmap(FileUtils.getRealFilePath(this, uri));
-		} else if (requestCode == REQUEST_CODE_CAPTURE_CAMEIA) {
-			insertBitmap(mCurrentPhotoFile.getAbsolutePath());
-		}
-	}
+        if (requestCode == REQUEST_CODE_PICK_IMAGE) {
+            Uri uri = data.getData();
+            insertBitmap(FileUtils.getRealFilePath(this, uri));
+        } else if (requestCode == REQUEST_CODE_CAPTURE_CAMEIA) {
+            insertBitmap(mCurrentPhotoFile.getAbsolutePath());
+        }
+    }
 
-	/**
-	 * 添加图片到富文本剪辑器
-	 * 
-	 * @param imagePath
-	 */
-	private void insertBitmap(String imagePath) {
-		mContentEditor.insertImage(imagePath);
-	}
+    /**
+     * 添加图片到富文本剪辑器
+     *
+     * @param imagePath
+     */
+    private void insertBitmap(String imagePath) {
+        mContentEditor.insertImage(imagePath);
+    }
 
-	/** 转换编辑框内的所有内容为字符串 */
-	private String dealEditData(List<EditData> editList) {
-		String data = "";
-		for (EditData itemData : editList) {
-			if (itemData.inputStr != null) {
-				data += itemData.inputStr;
-			} else if (itemData.imagePath != null) {
-				data += itemData.imagePath;
-			}
-		}
-		return data;
-	}
+    /**
+     * 转换编辑框内的所有内容为字符串
+     */
+    private String dealEditData(List<EditData> editList) {
+        String data = "";
+        for (EditData itemData : editList) {
+            if (itemData.inputStr != null) {
+                data += itemData.inputStr;
+            } else if (itemData.imagePath != null) {
+                data += itemData.imagePath;
+            }
+        }
+        return data;
+    }
 
-	/** 生成长微博 */
-	private void newLongBlog() {
-		List<EditData> editList = mContentEditor.buildEditData();
+    /**
+     * 生成长微博
+     */
+    private void newLongBlog() {
+        List<EditData> editList = mContentEditor.buildEditData();
 
-		// 存储到数据库
-		String content = dealEditData(editList);
-			
-		if (TextUtils.isEmpty(content)) {
-			ToastUtils.show("内容为空");
-			return;
-		} else {
-			Note note = new Note();
-			note.content = content;
-			note.modifyTime = System.currentTimeMillis();
-			note.nativeId = String.valueOf(System.currentTimeMillis());
-			NoteAccessor accessor = DatabaseAccessFactory.getInstance(
-					NoteEditActivity.this).noteAccessor();
-			accessor.insert(note);
-		}
+        // 存储到数据库
+        String content = dealEditData(editList);
 
-		// 生成长微博图片
-		int fontSize = 30; // 字体大小 目前先自己设定18sp
-		int wordNum = (LONG_BLOG_WIDTH / (fontSize)) - 1; // 转化成图片的时，每行显示的字数
+        if (TextUtils.isEmpty(content)) {
+            ToastUtils.show("内容为空");
+            return;
+        } else {
+            Note note = new Note();
+            note.content = content;
+            note.modifyTime = System.currentTimeMillis();
+            note.nativeId = String.valueOf(System.currentTimeMillis());
+            NoteAccessor accessor = DatabaseAccessFactory.getInstance(
+                    NoteEditActivity.this).noteAccessor();
+            accessor.insert(note);
+        }
 
-		float canvasHeight = (float) (fontSize * 0.8); // 画布的高度
-		int x = 10;
-		float y = (float) (fontSize * 0.8); // 开始画的起始位置
+        // 生成长微博图片
+        int fontSize = 30; // 字体大小 目前先自己设定18sp
+        int wordNum = (LONG_BLOG_WIDTH / (fontSize)) - 1; // 转化成图片的时，每行显示的字数
 
-		for (EditData itemData : editList) {
-			if (itemData.inputStr != null) {
-				LongBlogContent ct = LongBlogContent.getInstance();
-				ct.clearStatus();
-				ct.handleText(itemData.inputStr, wordNum);
-				canvasHeight += 35 * (ct.getHeight() + 1);
-			} else if (itemData.imagePath != null) {
-				BitmapFactory.Options options = new BitmapFactory.Options();
-				options.inJustDecodeBounds = true;
-				BitmapFactory.decodeFile(itemData.imagePath, options);
-				canvasHeight += (float) options.outHeight
-						/ ((float) options.outWidth / (float) LONG_BLOG_WIDTH);
-			}
-		}
+        float canvasHeight = (float) (fontSize * 0.8); // 画布的高度
+        int x = 10;
+        float y = (float) (fontSize * 0.8); // 开始画的起始位置
 
-		Bitmap bitmap = Bitmap.createBitmap(LONG_BLOG_WIDTH,
-				(int) canvasHeight, Config.ARGB_8888);
-		// 创建画布
-		Canvas canvas = new Canvas(bitmap);
-		// 设置画布背景颜色
-		canvas.drawARGB(255, 255, 255, 255);
+        for (EditData itemData : editList) {
+            if (itemData.inputStr != null) {
+                LongBlogContent ct = LongBlogContent.getInstance();
+                ct.clearStatus();
+                ct.handleText(itemData.inputStr, wordNum);
+                canvasHeight += 35 * (ct.getHeight() + 1);
+            } else if (itemData.imagePath != null) {
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                BitmapFactory.decodeFile(itemData.imagePath, options);
+                canvasHeight += (float) options.outHeight
+                        / ((float) options.outWidth / (float) LONG_BLOG_WIDTH);
+            }
+        }
 
-		for (EditData itemData : editList) {
-			if (itemData.inputStr != null) {
-				LongBlogContent ct = LongBlogContent.getInstance();
-				ct.clearStatus();
-				ct.handleText(itemData.inputStr, wordNum);
+        Bitmap bitmap = Bitmap.createBitmap(LONG_BLOG_WIDTH,
+                (int) canvasHeight, Config.ARGB_8888);
+        // 创建画布
+        Canvas canvas = new Canvas(bitmap);
+        // 设置画布背景颜色
+        canvas.drawARGB(255, 255, 255, 255);
 
-				// 创建画笔
-				Paint paint = new Paint();
-				// 通过画笔设置字体的大小、格式、颜色
-				paint.setTextSize(fontSize);
-				paint.setARGB(255, 0, 0, 0);
-				y = y + 10;
-				// 将处理后的内容画到画布上
-				String[] ss = ct.getContent();
-				for (int i = 0; i < ct.getHeight(); i++) {
-					canvas.drawText(ss[i], x, y, paint);
-					y = y + 35;
-				}
-				canvas.save(Canvas.ALL_SAVE_FLAG);
-			} else if (itemData.imagePath != null) {
-				BitmapFactory.Options options = new BitmapFactory.Options();
-				options.inJustDecodeBounds = true;
-				BitmapFactory.decodeFile(itemData.imagePath, options);
-				DisplayImageOptions opt = new DisplayImageOptions.Builder()
-						.imageScaleType(ImageScaleType.EXACTLY).build();
-				Bitmap b = ImageLoader.getInstance().loadImageSync("file://" + itemData.imagePath,
-						new ImageSize(LONG_BLOG_WIDTH, (int) ((float) options.outHeight / ((float) options.outWidth / (float) LONG_BLOG_WIDTH))), opt);
-				canvas.drawBitmap(b, 0, y, null);
-				canvas.save(Canvas.ALL_SAVE_FLAG);
-				y += ((float) options.outHeight / ((float) options.outWidth / (float) LONG_BLOG_WIDTH)) + 35;
-			}
-		}
-		canvas.restore();
+        for (EditData itemData : editList) {
+            if (itemData.inputStr != null) {
+                LongBlogContent ct = LongBlogContent.getInstance();
+                ct.clearStatus();
+                ct.handleText(itemData.inputStr, wordNum);
 
-		File sd = Environment.getExternalStorageDirectory();
-		String fpath = sd.getPath() + "/RichEditor";
+                // 创建画笔
+                Paint paint = new Paint();
+                // 通过画笔设置字体的大小、格式、颜色
+                paint.setTextSize(fontSize);
+                paint.setARGB(255, 0, 0, 0);
+                y = y + 10;
+                // 将处理后的内容画到画布上
+                String[] ss = ct.getContent();
+                for (int i = 0; i < ct.getHeight(); i++) {
+                    canvas.drawText(ss[i], x, y, paint);
+                    y = y + 35;
+                }
+                canvas.save(Canvas.ALL_SAVE_FLAG);
+            } else if (itemData.imagePath != null) {
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                BitmapFactory.decodeFile(itemData.imagePath, options);
+                DisplayImageOptions opt = new DisplayImageOptions.Builder()
+                        .imageScaleType(ImageScaleType.EXACTLY).build();
+                Bitmap b = ImageLoader.getInstance().loadImageSync("file://" + itemData.imagePath,
+                        new ImageSize(LONG_BLOG_WIDTH, (int) ((float) options.outHeight / ((float) options.outWidth / (float) LONG_BLOG_WIDTH))), opt);
+                canvas.drawBitmap(b, 0, y, null);
+                canvas.save(Canvas.ALL_SAVE_FLAG);
+                y += ((float) options.outHeight / ((float) options.outWidth / (float) LONG_BLOG_WIDTH)) + 35;
+            }
+        }
+        canvas.restore();
 
-		// 设置保存路径
-		String path = sd.getPath() + "/RichEditor/" + System.currentTimeMillis() + ".png";
+        File sd = Environment.getExternalStorageDirectory();
+        String fpath = sd.getPath() + "/RichEditor";
 
-		File file = new File(fpath);
-		if (!file.exists()) {
-			file.mkdir();
-		}
+        // 设置保存路径
+        String path = sd.getPath() + "/RichEditor/" + System.currentTimeMillis() + ".png";
 
-		FileOutputStream os = null;
-		try {
-			os = new FileOutputStream(new File(path));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
-		try {
-			os.flush();
-			os.close();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+        File file = new File(fpath);
+        if (!file.exists()) {
+            file.mkdir();
+        }
 
-		Intent shareIntent = new Intent(Intent.ACTION_SEND);
-		File file2 = new File(path);
-		shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file2));
-		shareIntent.setType("image/*");
-		startActivity(Intent.createChooser(shareIntent, "发布"));
-	}
+        FileOutputStream os = null;
+        try {
+            os = new FileOutputStream(new File(path));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+        try {
+            os.flush();
+            os.close();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        File file2 = new File(path);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file2));
+        shareIntent.setType("image/*");
+        startActivity(Intent.createChooser(shareIntent, "发布"));
+    }
 }

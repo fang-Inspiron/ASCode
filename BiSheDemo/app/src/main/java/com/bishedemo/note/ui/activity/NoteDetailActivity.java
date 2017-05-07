@@ -1,9 +1,9 @@
 package com.bishedemo.note.ui.activity;
 
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.text.TextUtils.TruncateAt;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -40,7 +40,7 @@ public class NoteDetailActivity extends BaseActivity {
 
 	/** 添加ActionBar */
 	private void setUpActionBar() {
-		mActionBar = getActionBar();
+		mActionBar = getSupportActionBar();
 		mActionBar.setDisplayShowTitleEnabled(true);
 		mActionBar.setHomeButtonEnabled(false);
 		mActionBar.setDisplayHomeAsUpEnabled(false);

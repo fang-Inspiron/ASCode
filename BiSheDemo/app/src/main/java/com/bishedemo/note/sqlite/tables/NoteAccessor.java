@@ -72,5 +72,17 @@ public class NoteAccessor extends TableAccessor {
 		}
 		return list;
 	}
-	
+
+
+
+	/**删除便签*/
+	public synchronized void delete(Note note) {
+		if (note == null || TextUtils.isEmpty(note.content)) {
+			DebugTraceTool.debugTraceE(this, "note is null or note content is null, can't delete");
+			return;
+		}
+		long num = mDatabase.delete(Tables.mNoteTable,"note_native_id = ?",new String[]{note.nativeId});
+		DebugTraceTool.debugTraceE(this, "delete number " + num);
+	}
+
 }
