@@ -19,6 +19,6 @@
         android:paddingRight="5dp"
         android:paddingTop="5dp"
         android:scaleType="fitXY"
-        android:src="@drawable/close" />
+        android:src="@drawable/note_edit_close" />
 
 </RelativeLayout>

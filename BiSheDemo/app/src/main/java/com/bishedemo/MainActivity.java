@@ -142,9 +142,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("title", title);
                 startActivity(intent);
             }
-        } else if (view.getId() == R.id.userInfo) {
-            startActivity(UniversalActivity.newIntent(this, "个人中心"));
         }
+//        else if (view.getId() == R.id.userInfo) {
+//            startActivity(UniversalActivity.newIntent(this, "个人中心"));
+//        }
     }
 
 

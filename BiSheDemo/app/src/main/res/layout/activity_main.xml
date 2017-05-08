@@ -74,22 +74,22 @@
 
             <TextView
                 style="@style/MenuText"
-                android:drawableLeft="@drawable/circle"
+                android:drawableLeft="@mipmap/icon_note"
                 android:text="日记" />
 
             <TextView
                 style="@style/MenuText"
-                android:drawableLeft="@drawable/wallet"
+                android:drawableLeft="@mipmap/icon_clock"
                 android:text="闹钟" />
 
             <TextView
                 style="@style/MenuText"
-                android:drawableLeft="@drawable/coupon"
+                android:drawableLeft="@mipmap/icon_lifehelper"
                 android:text="小助手" />
 
             <TextView
                 style="@style/MenuText"
-                android:drawableLeft="@drawable/settings"
+                android:drawableLeft="@mipmap/icon_setting"
                 android:text="设置" />
 
         </com.bishedemo.ui.SideBar>

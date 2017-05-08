@@ -59,7 +59,7 @@ public class BaseImageDecoder implements ImageDecoder {
 	}
 
 	/**
-	 * Decodes image from URI into {@link Bitmap}. Image is scaled close to incoming {@linkplain ImageSize target size}
+	 * Decodes image from URI into {@link Bitmap}. Image is scaled note_edit_close to incoming {@linkplain ImageSize target size}
 	 * during decoding (depend on incoming parameters).
 	 *
 	 * @param decodingInfo Needed data for decoding image

@@ -108,7 +108,7 @@ public class ImageDecodingInfo {
 	}
 
 	/**
-	 * @return Target size for image. Decoded bitmap should close to this size according to {@linkplain ImageScaleType
+	 * @return Target size for image. Decoded bitmap should note_edit_close to this size according to {@linkplain ImageScaleType
 	 * image scale type} and {@linkplain ViewScaleType view scale type}.
 	 */
 	public ImageSize getTargetSize() {

@@ -22,7 +22,6 @@ public class SettingActivity extends UniversalActivity implements View.OnClickLi
     private RelativeLayout layout_introduce;
     private RelativeLayout layout_about;
     private RelativeLayout layout_clean;
-    private RelativeLayout layout_night;
     private TextView tv_cacheSize;
 
 
@@ -45,13 +44,11 @@ public class SettingActivity extends UniversalActivity implements View.OnClickLi
         layout_introduce = (RelativeLayout) findViewById(R.id.layout_introduce);
         layout_about = (RelativeLayout) findViewById(R.id.layout_about);
         layout_clean = (RelativeLayout) findViewById(R.id.layout_clean);
-        layout_night = (RelativeLayout) findViewById(R.id.layout_night);
         tv_cacheSize = (TextView) findViewById(R.id.tv_cacheSize);
 
         layout_introduce.setOnClickListener(this);
         layout_about.setOnClickListener(this);
         layout_clean.setOnClickListener(this);
-        layout_night.setOnClickListener(this);
     }
 
     @Override
@@ -75,9 +72,6 @@ public class SettingActivity extends UniversalActivity implements View.OnClickLi
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                break;
-            case R.id.layout_night:
 
                 break;
         }
