@@ -82,6 +82,44 @@
         android:layout_height="2dp"
         android:background="#eee"></LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/layout_bus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/ib_bus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/helper_bus" />
+
+        <TextView
+            android:id="@+id/tv_bus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/ib_bus"
+            android:text="公交路线查询"
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/helper_bracket" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#eee"></LinearLayout>
 
     <RelativeLayout
         android:id="@+id/layout_parcel"
@@ -238,8 +276,10 @@
             android:background="@mipmap/helper_bracket" />
     </RelativeLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#eee"></LinearLayout>
+
 </LinearLayout>

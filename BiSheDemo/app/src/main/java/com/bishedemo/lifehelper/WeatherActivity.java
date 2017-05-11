@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.bishedemo.R;
 import com.bishedemo.bean.WeatherBean;
@@ -23,6 +24,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     private ListView mListView;
     private List<WeatherBean.ShowapiResBodyBean.DayListBean> mDatas;
+    private TextView tv_city;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,11 +33,13 @@ public class WeatherActivity extends AppCompatActivity {
         setTitle(getIntent().getStringExtra("appTitle"));
         String area = getIntent().getStringExtra("city");
 
+        tv_city = (TextView) findViewById(R.id.city);
+        tv_city.setText(area);
+
         ApiUtils.getWeatherList(area,new ApiUtils.GetListener<WeatherBean>() {
             @Override
             public void success(WeatherBean bean) {
                 mDatas=bean.getShowapi_res_body().getDayList();
-                System.out.println("%%%%%%%%%%"+mDatas);
                 initView();
             }
             @Override

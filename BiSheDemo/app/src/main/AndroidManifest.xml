@@ -54,6 +54,7 @@
         <activity android:name=".function.NewsDetailActivity" />
         <activity android:name=".lifehelper.WeatherActivity" />
         <activity android:name=".lifehelper.Pm25Activity" />
+        <activity android:name=".lifehelper.BusActivity"/>
         <activity android:name=".lifehelper.JokeActivity" />
         <activity android:name=".lifehelper.MenuActivity" />
         <activity android:name=".lifehelper.ParcelActivity" />

@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bishedemo.R;
 import com.bishedemo.adapter.PoemRecycleAdapter;
@@ -76,8 +77,12 @@ public class PoemActivity extends AppCompatActivity implements SwipeRefreshLayou
         ApiUtils.getPoemInfo(key, num, type, yayuntype, new ApiUtils.GetListener<PoemBean>() {
             @Override
             public void success(PoemBean poemBean) {
-                adapter = new PoemRecycleAdapter(getApplicationContext(), poemBean.getShowapi_res_body().getList());
-                initView();
+                if (poemBean.getShowapi_res_body().getList()!=null) {
+                    adapter = new PoemRecycleAdapter(getApplicationContext(), poemBean.getShowapi_res_body().getList());
+                    initView();
+                } else {
+                    Toast.makeText(PoemActivity.this, "服务器异常", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

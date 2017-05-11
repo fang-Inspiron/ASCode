@@ -1,5 +1,6 @@
 package com.bishedemo.http;
 
+import com.bishedemo.bean.BusBean;
 import com.bishedemo.bean.Channel;
 import com.bishedemo.bean.DetailNewsBean;
 import com.bishedemo.bean.IpBean;
@@ -9,6 +10,7 @@ import com.bishedemo.bean.ParcelBean;
 import com.bishedemo.bean.Pm25Bean;
 import com.bishedemo.bean.PoemBean;
 import com.bishedemo.bean.WeatherBean;
+import com.bishedemo.interfaces.BusApi;
 import com.bishedemo.interfaces.IpApi;
 import com.bishedemo.interfaces.JokeApi;
 import com.bishedemo.interfaces.MenuApi;
@@ -139,6 +141,26 @@ public class ApiUtils {
             }
         });
 
+    }
+
+    public static void getBusInfo(String city, String busNo, final GetListener<BusBean> listener) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(URL_LIFE_HELPER_BASE)
+                .addConverterFactory(FastJsonConverterFactory.create())
+                .build();
+        BusApi busApi = retrofit.create(BusApi.class);
+        Call<BusBean> call = busApi.getBusInfo(city,busNo, APP_ID, APP_SECRET);
+        call.enqueue(new Callback<BusBean>() {
+            @Override
+            public void onResponse(Call<BusBean> call, Response<BusBean> response) {
+                listener.success(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<BusBean> call, Throwable t) {
+                listener.error(t.getMessage());
+            }
+        });
     }
 
     public static void getJokeList(final GetListener<JokeBean> listener) {
