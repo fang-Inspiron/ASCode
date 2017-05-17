@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class ClockActivity extends UniversalActivity {
     Button buttonDelete;
     TextView textTime;
     TextView textDelete;
+    EditText et_set;
 
     long time;
     String time1String = null;
@@ -108,10 +110,16 @@ public class ClockActivity extends UniversalActivity {
             }
         }
 
+
         Intent intent = new Intent(ClockActivity.this, CallAlarm.class);
+        String set_thing = et_set.getText().toString();
+        if (set_thing.equals("")) {
+            set_thing = "快完成你制定的计划吧！";
+        }
+        intent.putExtra("setThing", set_thing);
+
         intent.putExtra("ringUri", pickedUri.toString());
-        PendingIntent sender = PendingIntent.getBroadcast(
-                ClockActivity.this, 0, intent, 0);
+        PendingIntent sender = PendingIntent.getBroadcast(ClockActivity.this, 0, intent, 0);
         AlarmManager am;
         am = (AlarmManager) getSystemService(ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), sender);
@@ -211,5 +219,6 @@ public class ClockActivity extends UniversalActivity {
         buttonDelete = (Button) findViewById(R.id.buttonDelete);
         textTime = (TextView) findViewById(R.id.textTime);
         textDelete = (TextView) findViewById(R.id.textDelete);
+        et_set = (EditText) findViewById(R.id.et_set);
     }
 }

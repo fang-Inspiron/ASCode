@@ -29,7 +29,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
  * 
  * {@link RichEditView} 可以作为初次编辑的控件，也可以作为再次编辑的控件，实用性相比 {@link RichEditor} 更高
  * 
- * @author RenHui
+ * @author fang
  */
 public class RichEditView extends LinearLayout {
 

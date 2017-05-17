@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  * Note数据库操作
- * @author renhui
+ * @author fang
  *
  */
 public class NoteAccessor extends TableAccessor {

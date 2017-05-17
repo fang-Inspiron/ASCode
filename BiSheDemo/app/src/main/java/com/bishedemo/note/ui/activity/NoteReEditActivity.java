@@ -42,7 +42,7 @@ import com.bishedemo.note.utils.ToastUtils;
 
 /** 再编辑便签界面  
  * 
- * @author RenHui
+ * @author fang
  */
 public class NoteReEditActivity extends AppCompatActivity implements OnClickListener {
 

@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bishedemo.R;
 import com.bishedemo.adapter.MenuRecycleAdapter;
@@ -65,8 +66,14 @@ public class MenuActivity extends AppCompatActivity implements SwipeRefreshLayou
         ApiUtils.getMenuList(num, word, new ApiUtils.GetListener<MenuBean>() {
             @Override
             public void success(MenuBean menuBean) {
-                adapter = new MenuRecycleAdapter(getApplicationContext(), menuBean.getShowapi_res_body().getNewslist());
-                initView();
+
+                if (menuBean.getShowapi_res_body().getNewslist()!=null) {
+                    adapter = new MenuRecycleAdapter(getApplicationContext(), menuBean.getShowapi_res_body().getNewslist());
+                    initView();
+                } else {
+                    Toast.makeText(MenuActivity.this, "服务器异常", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override

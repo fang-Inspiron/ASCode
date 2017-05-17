@@ -16,7 +16,7 @@ import com.bishedemo.note.utils.ToastUtils;
 /**
  * 手写板对话框
  * 
- * @author renhui
+ * @author fang
  *
  */
 public class WritePadDialog extends Dialog implements View.OnClickListener {

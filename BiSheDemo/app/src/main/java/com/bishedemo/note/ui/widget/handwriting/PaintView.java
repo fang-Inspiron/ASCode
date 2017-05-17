@@ -16,7 +16,7 @@ import android.view.View;
 /**
  * 能够绘图的View
  * 
- * @author renhui
+ * @author fang
  *
  */
 @SuppressLint("ClickableViewAccessibility")

@@ -16,7 +16,7 @@ import android.os.Environment;
 /**
  * 图片工具类
  * 
- * @author renhui
+ * @author fang
  */
 public class ImageUtils {
 

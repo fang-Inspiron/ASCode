@@ -13,6 +13,7 @@ public class CallAlarm extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Intent i = new Intent(context, AlarmAlert.class);
+        i.putExtra("setThing", intent.getStringExtra("setThing"));
         i.putExtra("ringUri", intent.getStringExtra("ringUri"));
         Bundle bundleRet = new Bundle();
         bundleRet.putString("STR_CALLER", "");

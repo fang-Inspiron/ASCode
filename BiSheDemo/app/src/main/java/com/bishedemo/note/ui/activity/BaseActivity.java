@@ -12,7 +12,7 @@ import com.umeng.analytics.MobclickAgent;
 /**
  * activity基类
  * 
- * @author renhui
+ * @author fang
  */
 public class BaseActivity extends UniversalActivity {
 

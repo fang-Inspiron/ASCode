@@ -25,7 +25,7 @@ import com.bishedemo.imageloader.core.assist.ImageSize;
 /**
  * 图片文本混排展示控件
  * 
- * @author renhui
+ * @author fang
  */
 public class RichTextView extends LinearLayout {
 	

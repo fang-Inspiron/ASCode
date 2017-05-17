@@ -65,7 +65,8 @@ public class WeatherActivity extends AppCompatActivity {
                 holder.setText(R.id.day_temperature, "白天温度："+dayListBean.getDay_air_temperature()+"℃");
                 holder.setText(R.id.night_temperature, "夜间温度："+dayListBean.getNight_air_temperature()+"℃");
                 holder.setText(R.id.day_wind_power, "白天风力："+dayListBean.getDay_wind_power());
-                holder.setText(R.id.night_wind_power, "夜间风力："+dayListBean.getNight_wind_power());
+                //holder.setText(R.id.night_wind_power, "夜间风力："+dayListBean.getNight_wind_power());
+                holder.setText(R.id.night_wind_power, "夜间风力：微风");
                 holder.setText(R.id.day_wind_direction, "白天风向："+dayListBean.getDay_wind_direction());
                 holder.setText(R.id.night_wind_direction, "夜间风向："+dayListBean.getNight_wind_direction());
             }

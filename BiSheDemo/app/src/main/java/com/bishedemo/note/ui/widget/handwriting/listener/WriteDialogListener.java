@@ -3,7 +3,7 @@ package com.bishedemo.note.ui.widget.handwriting.listener;
 /**
  * 手写板对话框监听
  * 
- * @author renhui
+ * @author fang
  *
  */
 public interface WriteDialogListener {

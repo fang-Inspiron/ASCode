@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * 时间处理工具类
- * @author Renhui
+ * @author fang
  */
 public class TimeUtils {
 	@SuppressLint("SimpleDateFormat")

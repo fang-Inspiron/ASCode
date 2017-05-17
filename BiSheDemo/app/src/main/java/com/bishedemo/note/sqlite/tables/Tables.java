@@ -2,7 +2,7 @@ package com.bishedemo.note.sqlite.tables;
 
 /**
  * 数据库表定义
- * @author renhui
+ * @author fang
  */
 public class Tables {
 	/**********************************************

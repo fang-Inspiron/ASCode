@@ -30,7 +30,7 @@ import java.util.List;
 
 /**
  * 以ScrollView为父容器的富文本编辑器
- * @author renhui
+ * @author fang
  */
 public class RichEditor extends ScrollView {
 	

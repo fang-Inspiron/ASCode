@@ -3,7 +3,7 @@ package com.bishedemo.note.utils;
 /**
  * 长微博内容处理工具类
  * 
- * @author renhui
+ * @author fang
  */
 public final class LongBlogContent {
 

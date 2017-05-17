@@ -21,7 +21,7 @@ public class AlarmAlert extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        String setThing = getIntent().getStringExtra("setThing");
         Uri ringUri = Uri.parse(getIntent().getStringExtra("ringUri"));
         try {
             mp.setDataSource(this, ringUri);
@@ -35,7 +35,7 @@ public class AlarmAlert extends Activity {
         new AlertDialog.Builder(AlarmAlert.this)
                 .setIcon(R.drawable.ic_clock_strip_desk_clock)
                 .setTitle("闹钟响了!")
-                .setMessage("快完成你制定的计划吧!!!")
+                .setMessage(setThing)
                 .setPositiveButton("关掉它",
                         new DialogInterface.OnClickListener()
                         {

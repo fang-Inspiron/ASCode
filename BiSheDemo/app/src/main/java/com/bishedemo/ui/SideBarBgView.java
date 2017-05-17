@@ -53,7 +53,7 @@ class SideBarBgView extends View {
         path.reset();
         float width = getWidth() * percent;
         float height = getHeight();
-        float arcWidth = width / 2; // 宽度的一般作为贝瑟尔曲线宽度
+        float arcWidth = width / 2; // 宽度的一半作为贝瑟尔曲线宽度
         float yOffset = height / 8; // 贝塞尔曲线高度的 offset,以达到背景的上下宽度变化
         if (GravityUtil.isLeft(parentLayoutGravity)) {
             path.lineTo(width - arcWidth, -yOffset);

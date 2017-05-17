@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 /**
  * Sqlite基本操作
  * 
- * @author renhui
+ * @author fang
  */
 public interface SqliteInterface {
 

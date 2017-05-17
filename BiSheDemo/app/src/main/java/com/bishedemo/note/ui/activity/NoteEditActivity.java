@@ -55,7 +55,7 @@ import com.bishedemo.note.utils.ToastUtils;
 /**
  * 编辑Note页面
  *
- * @author RenHui
+ * @author fang
  */
 @SuppressLint("SimpleDateFormat")
 public class NoteEditActivity extends BaseActivity {

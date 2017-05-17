@@ -7,7 +7,7 @@ import com.bishedemo.app.MyApplication;
 
 /**
  * Toast工具类
- * @author renhui
+ * @author fang
  */
 public class ToastUtils {
 

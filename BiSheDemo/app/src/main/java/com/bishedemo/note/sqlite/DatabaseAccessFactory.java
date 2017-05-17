@@ -10,7 +10,7 @@ import com.bishedemo.note.sqlite.tables.NoteAccessor;
 /**
  * 数据库访问工厂
  * 
- * @author renhui
+ * @author fang
  *
  */
 public class DatabaseAccessFactory {

@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 /**
  * 数据库表访问基类
  * 
- * @author renhui
+ * @author fang
  */
 abstract public class TableAccessor {
 	

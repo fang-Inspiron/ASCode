@@ -8,7 +8,7 @@ import android.provider.MediaStore.Images.ImageColumns;
 
 /***
  * File工具类
- * @author: RenHui
+ * @author: fang
  */
 public class FileUtils {
 	

@@ -7,7 +7,7 @@ import android.widget.ImageView;
 /**
  * 继承ImageView 此ImageView可以存储图片的地址
  * 
- * @author renhui
+ * @author fang
  */
 public class RichImageView extends ImageView {
 
